@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: tank-note-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: tank_note
+      POSTGRES_USER: tank_user
+      POSTGRES_PASSWORD: secret123
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

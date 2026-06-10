@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from app.schemas.auth import RegisterRequest
 
 router = APIRouter(
 	prefix="/auth",
@@ -6,9 +7,10 @@ router = APIRouter(
 )
 
 @router.post("/register")
-def register():
+def register(request: RegisterRequest):
 	return {
-		"message": "register"
+		"email": request.email,
+		"message": "success"
 	}
 
 @router.post("/login")
